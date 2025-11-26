@@ -30,8 +30,6 @@ import me.lucko.spark.common.SparkPlatform;
 import me.lucko.spark.common.util.SparkPlaceholder;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,7 +39,7 @@ public enum SparkFabricPlaceholderApi {
     public static void register(SparkPlatform platform) {
         for (SparkPlaceholder placeholder : SparkPlaceholder.values()) {
             Placeholders.register(
-                    ResourceLocation.fromNamespaceAndPath("spark", placeholder.getName()),
+                    ResourceLocation.tryBuild("spark", placeholder.getName()),
                     new Handler(platform, placeholder)
             );
         }
@@ -60,10 +58,9 @@ public enum SparkFabricPlaceholderApi {
         }
 
         private static net.minecraft.network.chat.Component toText(Component component) {
-            return ComponentSerialization.CODEC.decode(
-                    RegistryAccess.EMPTY.createSerializationContext(JsonOps.INSTANCE),
+            return net.minecraft.network.chat.Component.Serializer.fromJson(
                     GsonComponentSerializer.gson().serializeToTree(component)
-            ).getOrThrow(JsonParseException::new).getFirst();
+            );
         }
     }
 

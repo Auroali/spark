@@ -6,7 +6,7 @@ version = '0.1-SNAPSHOT'
 
 dependencies {
     compileOnly 'org.checkerframework:checker-qual:3.44.0'
-    compileOnly 'org.jetbrains:annotations:24.1.0'
+    api 'org.jetbrains:annotations:24.1.0'
 }
 
 license {

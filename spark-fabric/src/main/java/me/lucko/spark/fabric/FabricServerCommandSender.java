@@ -37,7 +37,7 @@ public class FabricServerCommandSender extends MinecraftServerCommandSender {
             ServerPlayer player = this.delegate.getPlayer();
             MinecraftServer server = this.delegate.getServer();
             if (player != null) {
-                if (server != null && server.isSingleplayerOwner(player.nameAndId())) {
+                if (server != null && server.isSingleplayerOwner(player.getGameProfile())) {
                     return true;
                 }
                 return player.hasPermissions(4);
