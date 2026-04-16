@@ -33,7 +33,7 @@ public interface PersistentEntitySectionManagerAccessor {
     @Accessor
     EntitySectionStorage<Entity> getSectionStorage();
 
-    @Accessor
+    @Accessor("visibleEntityStorage")
     EntityLookup<?> getVisibleEntityStorage();
 
 }

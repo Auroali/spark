@@ -33,7 +33,7 @@ public interface TransientEntitySectionManagerAccessor {
     @Accessor
     EntitySectionStorage<Entity> getSectionStorage();
 
-    @Accessor
+    @Accessor("entityStorage")
     EntityLookup<?> getEntityStorage();
 
 }
