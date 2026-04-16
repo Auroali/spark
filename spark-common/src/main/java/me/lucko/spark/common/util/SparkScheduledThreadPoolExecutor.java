@@ -20,7 +20,7 @@
 
 package me.lucko.spark.common.util;
 
-import org.jspecify.annotations.NonNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
